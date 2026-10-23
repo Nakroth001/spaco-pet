@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espaço Pet | Pet Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --azul:#13b8d0;
+  --azul-escuro:#078ca4;
+  --amarelo:#ffcc24;
+  --texto:#203442;
+  --cinza:#657783;
+  --fundo:#f4fbfc;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{font-family:'Nunito',sans-serif;color:var(--texto)}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1150px;margin:auto}
+.topo-aviso{background:var(--amarelo);text-align:center;padding:10px;font-size:13px;font-weight:900}
+header{position:sticky;top:0;background:white;z-index:10;box-shadow:0 2px 15px #00000008}
+nav{min-height:80px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:900}
+.logo-icon{width:48px;height:48px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;font-size:27px}
+.logo small{display:block;color:var(--azul-escuro);font-size:10px;letter-spacing:2px}
+.links{display:flex;align-items:center;gap:24px;font-weight:800;font-size:14px}
+.btn{display:inline-block;padding:14px 22px;border-radius:40px;font-weight:900;font-size:14px;transition:.2s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-3px)}
+.btn-azul{background:var(--azul);color:white}
+.btn-azul:hover{background:var(--azul-escuro)}
+.btn-branco{background:white;border:1px solid #dbe8eb}
+.btn-amarelo{background:var(--amarelo);color:var(--texto)}
+.hero{padding:75px 0;background:linear-gradient(120deg,#effbfc,#fff9df)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.etiqueta{display:inline-block;background:white;color:var(--azul-escuro);padding:9px 15px;border-radius:30px;font-weight:900;font-size:12px;margin-bottom:22px}
+h1{font-size:clamp(42px,5vw,66px);line-height:1.05;letter-spacing:-2px;margin-bottom:22px}
+h1 span{color:var(--azul-escuro)}
+.hero p{font-size:16px;line-height:1.9;color:var(--cinza);margin-bottom:27px}
+.acoes{display:flex;gap:12px;flex-wrap:wrap}
+.hero-img{height:430px;object-fit:cover;width:100%;border-radius:45% 45% 25px 25px;border:8px solid white;box-shadow:0 20px 50px #147c8c20}
+section{padding:80px 0}
+.titulo{text-align:center;max-width:680px;margin:0 auto 42px}
+.titulo small,.subtitulo{display:block;color:var(--azul-escuro);font-size:12px;letter-spacing:2px;font-weight:900;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(30px,4vw,43px);line-height:1.2;letter-spacing:-1px}
+.titulo p{color:var(--cinza);line-height:1.8;margin-top:14px}
+.servicos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.servico{padding:28px;border:1px solid #e7eff1;border-radius:23px;transition:.25s}
+.servico:hover{transform:translateY(-5px);box-shadow:0 15px 35px #20344212}
+.icone{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:#fff2b5;font-size:29px;margin-bottom:20px}
+.servico:nth-child(3n+2) .icone{background:#def8fc}
+.servico:nth-child(3n) .icone{background:#e2f8e8}
+.servico h3{font-size:19px;margin-bottom:10px}
+.servico p{font-size:14px;color:var(--cinza);line-height:1.8;margin-bottom:17px}
+.texto-link{color:var(--azul-escuro);font-weight:900;font-size:13px}
+.sobre{background:var(--fundo)}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.sobre img{width:100%;height:430px;object-fit:cover;border-radius:28px;box-shadow:15px 15px 0 var(--amarelo)}
+.sobre p{color:var(--cinza);line-height:1.9;margin:20px 0}
+.lista{list-style:none;margin:25px 0}
+.lista li{margin:15px 0;font-weight:800;font-size:14px}
+.lista li::before{content:"✓";background:#ddf7e7;color:#208653;padding:5px 9px;border-radius:50%;margin-right:10px}
+.galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.foto{height:280px;border-radius:20px;overflow:hidden;background:#eef7f8}
+.foto img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.foto:hover img{transform:scale(1.06)}
+.chamada{padding-top:0}
+.chamada-box{background:var(--azul);color:white;border-radius:30px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.chamada-box h2{max-width:620px;margin-bottom:12px}
+.chamada-box p{line-height:1.8;color:#e7fbff}
+.contato{background:var(--fundo)}
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.contato p{color:var(--cinza);line-height:1.8;margin:12px 0 24px}
+.dado{display:flex;gap:14px;margin:22px 0;align-items:flex-start}
+.dado-icone{background:white;border-radius:14px;padding:12px;font-size:22px}
+.dado strong{display:block;margin-bottom:5px}
+.dado span,.dado a{font-size:14px;color:var(--cinza);line-height:1.7}
+.contato-card{background:white;border-radius:25px;padding:32px}
+.contato-card h3{font-size:23px}
+.contato-card .btn{width:100%;text-align:center;margin-top:12px}
+footer{background:#203442;color:white;padding:30px 0}
+.rodape{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.rodape p{font-size:12px;color:#bdcbd0;margin-top:5px}
+.whatsapp{position:fixed;bottom:20px;right:20px;width:58px;height:58px;border-radius:50%;background:#20c66b;color:white;display:grid;place-items:center;font-size:27px;box-shadow:0 5px 20px #0002;z-index:20}
+@media(max-width:800px){
+ .links a:not(.btn){display:none}
+ .hero-grid,.sobre-grid,.contato-grid{grid-template-columns:1fr}
+ .hero-grid{gap:35px}
+ .hero-img{height:350px}
+ .servicos-grid{grid-template-columns:repeat(2,1fr)}
+ .sobre-grid{gap:35px}
+ .chamada-box{flex-direction:column;align-items:flex-start;padding:30px}
+}
+@media(max-width:520px){
+ nav{min-height:70px}
+ .logo{font-size:20px;gap:8px}
+ .logo-icon{width:42px;height:42px}
+ .links .btn{font-size:11px;padding:12px}
+ .hero{padding:50px 0}
+ h1{font-size:45px}
+ section{padding:60px 0}
+ .servicos-grid{grid-template-columns:1fr}
+ .galeria-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+ .foto{height:190px}
+ .chamada{padding-top:0}
+ .chamada-box h2{font-size:30px}
+ .contato-card{padding:24px}
+ .rodape{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<div class="topo-aviso">🐾 SEU MELHOR AMIGO MERECE TODO CARINHO DO MUNDO!</div>
+
+<header>
+<nav class="container">
+  <a href="#inicio" class="logo">
+    <div class="logo-icon">🐶</div>
+    <div>Espaço Pet<small>PET SHOP & CUIDADO ANIMAL</small></div>
+  </a>
+  <div class="links">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre nós</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#contato" class="btn btn-azul">Agendar horário ↗</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+<div class="container hero-grid">
+  <div>
+    <div class="etiqueta">💛 UM ESPAÇO ESPECIAL PARA SEU PET</div>
+    <h1>Mais carinho.<br>Mais cuidado.<br><span>Mais alegria!</span></h1>
+    <p>Seu companheiro merece se sentir especial. Aqui, cada pet recebe atenção e carinho para ficar ainda mais lindo e feliz.</p>
+    <div class="acoes">
+      <a class="btn btn-azul" href="https://wa.me/5533997087887?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20para%20meu%20pet." target="_blank">🐾 Agendar pelo WhatsApp</a>
+      <a class="btn btn-branco" href="#servicos">Nossos serviços</a>
+    </div>
+  </div>
+  <div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1000&q=85" alt="Cachorro recebendo carinho">
+  </div>
+</div>
+</section>
+
+<section id="servicos">
+<div class="container">
+  <div class="titulo">
+    <small>Nosso espaço</small>
+    <h2>Tudo para cuidar de quem você ama</h2>
+    <p>Um lugar pensado para oferecer cuidado, bem-estar e aquele carinho extra que faz toda a diferença.</p>
+  </div>
+  <div class="servicos-grid">
+    <article class="servico"><div class="icone">🛁</div><h3>Banho</h3><p>Higiene e cuidado para deixar seu companheiro limpinho, cheiroso e confortável.</p><a class="texto-link" href="https://wa.me/5533997087887?text=Ol%C3%A1%21%20Quero%20saber%20sobre%20banho.">Consultar valores →</a></article>
+    <article class="servico"><div class="icone">✂️</div><h3>Tosa</h3><p>Cuidados com a pelagem para deixar seu pet bonito e confortável.</p><a class="texto-link" href="https://wa.me/5533997087887?text=Ol%C3%A1%21%20Quero%20saber%20sobre%20tosa.">Consultar valores →</a></article>
+    <article class="servico"><div class="icone">🎀</div><h3>Beleza pet</h3><p>Detalhes especiais para deixar seu bichinho ainda mais fofo e elegante.</p><a class="texto-link" href="https://wa.me/5533997087887">Saiba mais →</a></article>
+    <article class="servico"><div class="icone">🐕</div><h3>Cuidados especiais</h3><p>Atenção às necessidades de cada animal para um atendimento agradável.</p><a class="texto-link" href="https://wa.me/5533997087887">Fale conosco →</a></article>
+    <article class="servico"><div class="icone">🦴</div><h3>Produtos para pets</h3><p>Consulte nossa equipe sobre os produtos disponíveis para seu companheiro.</p><a class="texto-link" href="https://wa.me/5533997087887">Consultar produtos →</a></article>
+    <article class="servico"><div class="icone">💛</div><h3>Atendimento com carinho</h3><p>Cada pet tem seu jeitinho. Converse conosco sobre o melhor cuidado para ele.</p><a class="texto-link" href="https://wa.me/5533997087887">Entre em contato →</a></article>
+  </div>
+</div>
+</section>
+
+<section class="sobre" id="sobre">
+<div class="container sobre-grid">
+  <div><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=85" alt="Cachorrinho fofo"></div>
+  <div>
+    <div class="subtitulo">Conheça o Espaço Pet</div>
+    <h2>Seu pet é parte da família. Aqui, ele é tratado assim.</h2>
+    <p>Cuidar de um animal vai muito além da aparência. É oferecer atenção, respeito e carinho em cada etapa do atendimento.</p>
+    <ul class="lista">
+      <li>Atenção e carinho com cada bichinho.</li>
+      <li>Cuidado com o conforto e bem-estar.</li>
+      <li>Contato fácil para tirar dúvidas e agendar.</li>
+      <li>Atendimento pensado para você e seu companheiro.</li>
+    </ul>
+    <a class="btn btn-azul" href="https://wa.me/5533997087887">Fale com nossa equipe ↗</a>
+  </div>
+</div>
+</section>
+
+<section id="galeria">
+<div class="container">
+  <div class="titulo">
+    <small>Galeria pet</small>
+    <h2>Uma fofura atrás da outra 🐶</h2>
+    <p>Seu melhor amigo também merece um momento especial!</p>
+  </div>
+  <div class="galeria-grid">
+    <div class="foto"><img loading="lazy" src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=700&q=85" alt="Cachorro"></div>
+    <div class="foto"><img loading="lazy" src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=700&q=85" alt="Golden retriever"></div>
+    <div class="foto"><img loading="lazy" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=700&q=85" alt="Cachorro sorrindo"></div>
+    <div class="foto"><img loading="lazy" src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=700&q=85" alt="Cães brincando"></div>
+    <div class="foto"><img loading="lazy" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=700&q=85" alt="Cachorro feliz"></div>
+    <div class="foto"><img loading="lazy" src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=85" alt="Cachorrinho"></div>
+  </div>
+</div>
+</section>
+
+<section class="chamada">
+<div class="container">
+  <div class="chamada-box">
+    <div><h2>Seu melhor amigo merece esse carinho!</h2><p>Entre em contato, consulte nossos serviços e agende um horário.</p></div>
+    <a class="btn btn-amarelo" href="https://wa.me/5533997087887?text=Ol%C3%A1%21%20Quero%20agendar%20um%20hor%C3%A1rio%20para%20meu%20pet.">Agendar agora ↗</a>
+  </div>
+</div>
+</section>
+
+<section class="contato" id="contato">
+<div class="container contato-grid">
+  <div>
+    <div class="subtitulo">Fale com a gente</div>
+    <h2>Vamos cuidar do seu melhor amigo?</h2>
+    <p>Ficou com alguma dúvida ou quer marcar um horário? Estamos a uma mensagem de distância.</p>
+    <div class="dado"><div class="dado-icone">📱</div><div><strong>WhatsApp</strong><a href="https://wa.me/5533997087887" target="_blank">(33) 99708-7887</a></div></div>
+    <div class="dado"><div class="dado-icone">📍</div><div><strong>Nosso endereço</strong><span>Rua Duque de Caxias, nº 190, ao lado do Banco Bradesco.</span></div></div>
+    <div class="dado"><div class="dado-icone">🕒</div><div><strong>Horário de funcionamento</strong><span>Consulte os horários disponíveis pelo WhatsApp.</span></div></div>
+    <div class="dado"><div class="dado-icone">📸</div><div><strong>Instagram</strong><a href="https://www.instagram.com/spacopeet/" target="_blank">@spacopeet</a></div></div>
+  </div>
+  <div class="contato-card">
+    <h3>Agende seu horário 🐾</h3>
+    <p>Conte para a gente o que seu pet precisa. Vamos encontrar a melhor opção!</p>
+    <a class="btn btn-azul" href="https://wa.me/5533997087887?text=Ol%C3%A1%21%20Vim%20pelo%20site%20do%20Espa%C3%A7o%20Pet%20e%20quero%20agendar." target="_blank">💬 Conversar pelo WhatsApp</a>
+    <a class="btn btn-branco" href="https://www.instagram.com/spacopeet/" target="_blank">📸 Visitar nosso Instagram</a>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container rodape">
+  <div><strong>🐾 Espaço Pet</strong><p>Cuidado, carinho e amor em cada detalhe.</p></div>
+  <p>© <span id="ano"></span> Espaço Pet. Todos os direitos reservados.</p>
+  <a href="https://www.instagram.com/spacopeet/" target="_blank">Instagram ↗</a>
+</div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5533997087887?text=Ol%C3%A1%21%20Vim%20pelo%20site%20do%20Espa%C3%A7o%20Pet." target="_blank" aria-label="WhatsApp">☏</a>
+
+<script>
+document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
